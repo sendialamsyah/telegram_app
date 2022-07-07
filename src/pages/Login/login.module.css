@@ -1,0 +1,75 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  height: 530px;
+  width: 400px;
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background: #ffffff;
+  box-shadow: 0px 20px 20px rgba(126, 152, 223, 0.05);
+  border-radius: 30px;
+}
+
+.container h5 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.165px;
+  color: #7e98df;
+}
+
+.container p {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #232323;
+  margin-top: 25px;
+}
+
+.formWarpper h6 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #848484;
+  opacity: 0.75;
+  margin-top: 25px;
+  margin-bottom: 2px;
+}
+
+.formWarpper p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: right;
+  color: #7e98df;
+}
+.loginWith .hr1 {
+  position: relative;
+  width: 80px;
+  bottom: 25px;
+}
+.loginWith .hr2 {
+  position: relative;
+  width: 80px;
+  bottom: 42px;
+  left: 220px;
+  margin-bottom: -15px;
+}
+.loginWith p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #848484;
+  margin-top: 20px;
+}
+.signUp {
+  margin-top: 20px;
+  text-align: center;
+}
+.signUp span {
+  color: #7e98df;
+}
