@@ -12,7 +12,7 @@ const App = () => {
   useEffect(()=>{
     const token = localStorage.getItem('token')
     if(!socket && token){
-      const resultSocket = io('http://localhost:7000', {
+      const resultSocket = io('https://telegram-chat-apps.herokuapp.com', {
         query: {
           token: token
         }

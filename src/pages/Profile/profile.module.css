@@ -32,13 +32,13 @@
 }
 
 .profile {
-    display: flex;
-    justify-content: center;
+    
     /* margin-left: 100px; */
     margin-top: 50px;
 }
 
 .imageProfile {
+    margin-left: 90px;
     height: 120px;
     width: 100px;
     border-radius: 20px;
@@ -115,7 +115,19 @@
 
 .inputName input {
     height: 50px;
-    width: 500px;
+    width: 250px;
     padding-left: 30px;
     border-radius: 10px;
+}
+
+.container {
+    border: 2px solid #7E98DF;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-right: auto;
+    height: 500px;
+    width: 500px;
+    background: #fff;
 }

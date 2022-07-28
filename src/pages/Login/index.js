@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styles from "./login.module.css";
 import Input from '../../components/base/Input'
 import Button from "../../components/base/Button";
-import Image from './image/Vector (2).png'
+import Image from '../../assets/Vector (2).png'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import io from 'socket.io-client'
-
+import swal from 'sweetalert'
 
 const Login = ({setSocket}) => {
   const navigate = useNavigate()
@@ -22,24 +22,34 @@ const Login = ({setSocket}) => {
   }
   const handleLogin = (e) =>{
     e.preventDefault()
-    axios.post(`${process.env.REACT_APP_API_BACKEND}/user/login`, formLogin)
+    axios.post(`${process.env.REACT_APP_API_HEROKU}/users/login`, formLogin)
     .then((res)=>{
       const respData = res.data.data
       // console.log(respData);
       localStorage.setItem('token', respData.token)
       localStorage.setItem('refreshToken', respData.refreshToken)
-      const resultSocket = io('http://localhost:7000', {
+      const resultSocket = io('https://telegram-chat-apps.herokuapp.com', {
         query: {
           token: respData.token
         }
       })
       setSocket(resultSocket)
-      alert('login sucess')
+      swal({
+        title: "Good job!",
+        text: "Login Success",
+        icon: "success",
+        button: "Oke",
+      });
       navigate('/chat')
     })
     .catch((err)=>{
       console.log(err)
-      alert('wrong email or password')
+      swal({
+        title: "Login Failed",
+        text: "wrong email or password",
+        icon: "error",
+        button: "Ok",
+      });
     })
   }
   return (

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styles from "./register.module.css";
 import Input from "../../components/base/Input";
 import Button from "../../components/base/Button";
-import Image from "../Login/image/Vector (2).png";
+import Image from "../../assets/Vector (2).png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const Register = () => {
   const navigate = useNavigate()
@@ -22,14 +23,14 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_API_BACKEND}/user/register`, formRegister)
+      .post(`${process.env.REACT_APP_API_HEROKU}/users/register`, formRegister)
       .then(() => {
-        alert("Register sucess");
+        swal("Good job!", "Register Success!", "success");
         navigate('/login')
       })
       .catch((err) => {
-        // console.log(err);
-        alert("Register failed");
+        console.log(err);
+        swal("Register Failed!", "", "error");
         
       });
   };

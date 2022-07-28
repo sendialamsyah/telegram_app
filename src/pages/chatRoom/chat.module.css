@@ -28,8 +28,9 @@
     height: 20px;
     position: absolute;
     left: 40px;
-    top: 123px;
+    top: 135px;
 }
+
 .menu {
     display: flex;
     justify-content: space-between;
@@ -95,37 +96,44 @@
     color: #7E98DF;
     padding-top: 5px;
 }
-.scroll{
+
+.scroll {
     display: flex;
     /* height: 100%; */
     overflow: auto;
     height: 390px;
-  }
-.bubbleChat {
-    width: auto;
-    height: auto;
-    margin-top: 15px;
-    background: #FFFFFF;
-    list-style: none;
-    padding: 30px;
-    gap: 10px;
-    border-radius: 35px 10px 35px 35px;
-    font-weight: 400;
-font-size: 15px;
-line-height: 185.17%;
-letter-spacing: -0.165px;
-color: #232323;
-text-align: right;
 }
-.bubbleFriend {
+
+.bubbleChat {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 15px;
     background: #7E98DF;
     color: #FFFFFF;
-    text-align: left;
-  }
+    list-style: none;
+    padding: 10px 20px 5px 20px;
+    gap: 10px;
+    border-radius: 10px 35px 35px 35px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 185.17%;
+    letter-spacing: -0.165px;
+}
+
+.bubbleFriend {
+    background: greenyellow;
+    color: #232323;
+    border-radius: 35px 10px 35px 35px;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
 .message {
     margin-top: 10px;
     margin-bottom: -200px;
 }
+
 .profileNav {
     display: flex;
     padding-top: 20px;
@@ -134,27 +142,30 @@ text-align: right;
     height: 100px;
     background: #FFFFFF;
 }
+
 .inputMessage {
-    position: absolute;
+    margin-top: 210px;
+    /* position: relative; */
     bottom: 0px;
     width: 1000px;
     height: 100px;
     background: #FFFFFF;
 }
+
 .inputMessage input {
     margin-top: 30px;
     margin-left: 15px;
     padding: 5px 100px 5px 30px;
     width: 950px;
-height: 50px;
-background-color: #FAFAFA;
-border: none;
-border-radius: 15px;
+    height: 50px;
+    background-color: #FAFAFA;
+    border: none;
+    border-radius: 15px;
     font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-letter-spacing: -0.165px;
-color: #848484;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.165px;
+    color: #848484;
 }
 
 .buttonInput {
@@ -167,6 +178,7 @@ color: #848484;
     border: none;
 
 }
+
 .app {
     display: flex;
     justify-content: space-between;
@@ -187,8 +199,49 @@ color: #848484;
 .dropdown :hover {
     background-color: blue;
 }
-
+.imgProfile {
+    cursor: pointer;
+    margin-top: -8px;
+}
 .col2 {
     height: 610px;
     background: #fafafa;
 }
+.delete {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 20px;
+    width: 20px;
+    height: 25px;
+}
+/* .dropdown {
+    display: inline-block;
+}
+
+
+.dropdown:hover .dropdownChild {
+    display: block;
+    list-style: none;
+}
+
+.dropdownChild a:hover {
+    color: #fff !important;
+}
+
+.dropdownChild {
+    position: absolute;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: #f9f9f9;
+}
+
+/* .dropdownChild a {
+    color: #3c3c3c !important;
+} */
+
+/* .isi-dropdown a:hover {
+    color: #232323 !important;
+    background: #f3f3f3 !important;
+} */ 

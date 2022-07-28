@@ -1,20 +1,40 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import styles from "./chat.module.css";
-import imageProfile from "./image/default profile.jpg";
-import searchIcon from "./image/search-icon-transparent-images-vector-16.png";
+import imageProfile from "../../assets/default profile.jpg";
+import searchIcon from "../../assets/search-icon-transparent-images-vector-16.png";
 import axios from "axios";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+import imgProfile from '../../assets/download-icon-profile+profile+page+user+icon-1320186864367220794_512.png'
+// import Modal from "../../components/module/Modal"
 
 const Chat = ({ socket }) => {
-  const [message, setMessage] = useState("");
+  const Navigate = useNavigate()
   const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
   const [friends, setFriends] = useState([]);
   const [friend, setFriend] = useState({});
+  const [profile, setProfile] = useState([])
+
+  useEffect(() => {
+            const token = localStorage.getItem('token')
+            axios.get(`${process.env.REACT_APP_API_HEROKU}/users/profile`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }).then((res) => {
+              const user = res.data.data;
+              setProfile(user);
+            });
+          }, []);
+
+          console.log(profile)
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${process.env.REACT_APP_API_BACKEND}/user`, {
+      .get(`${process.env.REACT_APP_API_HEROKU}/users/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -27,9 +47,10 @@ const Chat = ({ socket }) => {
 
   useEffect(() => {
     if (socket) {
-      socket.off("NewMessage");
+      socket.off("newMessage");
       socket.on("newMessage", (message) => {
         setMessages((current) => [...current, message]);
+        console.log(message);
       });
     }
   }, [socket]);
@@ -37,7 +58,7 @@ const Chat = ({ socket }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${process.env.REACT_APP_API_BACKEND}/message/${friend.iduser}`, {
+      .get(`${process.env.REACT_APP_API_HEROKU}/messages/${friend.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +74,7 @@ const Chat = ({ socket }) => {
       socket.emit(
         "sendMessage",
         {
-          idReceiver: friend.iduser,
+          idReceiver: friend.id,
           messageBody: message,
         },
         (message) => {
@@ -66,17 +87,24 @@ const Chat = ({ socket }) => {
   const chooseFriend = (friend) => {
     setFriend(friend);
   };
+
+  const deleteMessage = async (id) => {
+    await axios.delete(`${process.env.REACT_APP_API_HEROKU}/messages/${id}`).then(() => {
+      swal("Good job!", "Delete Message Success!", "success");
+    });
+  };
+
   return (
     <div>
       <div className={`row ${styles.row}`}>
         <div className={`col-3 ${styles.col1}`}>
           <div className={styles.app}>
             <h2>Telegram</h2>
-            <button className={styles.dropdown}> - </button>
-            {/* <div className={styles.dropdownChild}>
-                    <Link to='#'>Profile</Link>
-                    <Link to='#'>Profile</Link>
-                </div> */}
+            {/* <Modal/> */}
+            {/* <button className={styles.dropdown} onClick={()=>Navigate(`/profile/${profile.id}`)}> {imgProfile} </button> */}
+            <p className={styles.imgProfile} onClick={()=>Navigate(`/profile/${profile.id}`)}>
+            <img src={imgProfile} alt="img" width='50px' height='50px' />
+            </p>
           </div>
           <div className={styles.search}>
             <input type="text" placeholder="Type your message..." />
@@ -95,7 +123,7 @@ const Chat = ({ socket }) => {
               </div>
               <div className={styles.profileName}>
                 <h5>{item.name}</h5>
-                <p>aplah</p>
+                {/* <p></p> */}
               </div>
             </div>
           ))}
@@ -112,22 +140,23 @@ const Chat = ({ socket }) => {
           <div className={styles.message}>
             <ScrollToBottom className={styles.scroll}>
               {messages.map((item) => (
-                <div>
-                  <div className={styles.imageProfile}>
-                    <img
-                      src={friend.image ? friend.image : imageProfile}
-                      alt="img"
-                    />
-                  </div>
+                <div className={styles.bubbleWarpper}>
                   <li
                     className={` ${styles.bubbleChat} ${
-                      item.receiverId !== friend.iduser
+                      item.receiver_id === friend.id
                         ? `${styles.bubbleFriend}`
                         : ""
                     }`}
                   >
-                    <p>
-                      {item.message} - {item.createdAt}
+                    <p>{item.message}</p>
+                    <p className={styles.date}>
+                      {item.date}{" "}
+                      <button
+                        onClick={() => deleteMessage(item.id)}
+                        className={styles.delete}
+                      >
+                        x
+                      </button>
                     </p>
                   </li>
                 </div>

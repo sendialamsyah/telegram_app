@@ -13,8 +13,8 @@ const detailUser = (state = initialState, action) => {
     case "GET_DETAIL_SUCCESS":
       return {
         ...state,
+        detail: action.payload,
         isLoading: false,
-        data: action.payload.data
       };
     case "GET_DETAIL_ERROR":
       return {
