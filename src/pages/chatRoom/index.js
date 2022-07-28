@@ -6,30 +6,32 @@ import searchIcon from "../../assets/search-icon-transparent-images-vector-16.pn
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import imgProfile from '../../assets/download-icon-profile+profile+page+user+icon-1320186864367220794_512.png'
+import imgProfile from "../../assets/download-icon-profile+profile+page+user+icon-1320186864367220794_512.png";
 // import Modal from "../../components/module/Modal"
 
 const Chat = ({ socket }) => {
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [friends, setFriends] = useState([]);
   const [friend, setFriend] = useState({});
-  const [profile, setProfile] = useState([])
+  const [profile, setProfile] = useState([]);
 
   useEffect(() => {
-            const token = localStorage.getItem('token')
-            axios.get(`${process.env.REACT_APP_API_HEROKU}/users/profile`, {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
-            }).then((res) => {
-              const user = res.data.data;
-              setProfile(user);
-            });
-          }, []);
+    const token = localStorage.getItem("token");
+    axios
+      .get(`${process.env.REACT_APP_API_HEROKU}/users/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const user = res.data.data;
+        setProfile(user);
+      });
+  }, []);
 
-          console.log(profile)
+  console.log(profile);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -50,7 +52,7 @@ const Chat = ({ socket }) => {
       socket.off("newMessage");
       socket.on("newMessage", (message) => {
         setMessages((current) => [...current, message]);
-        console.log(message);
+        // console.log(messages);
       });
     }
   }, [socket]);
@@ -89,9 +91,11 @@ const Chat = ({ socket }) => {
   };
 
   const deleteMessage = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_API_HEROKU}/messages/${id}`).then(() => {
-      swal("Good job!", "Delete Message Success!", "success");
-    });
+    await axios
+      .delete(`${process.env.REACT_APP_API_HEROKU}/messages/${id}`)
+      .then(() => {
+        swal("Good job!", "Delete Message Success!", "success");
+      });
   };
 
   return (
@@ -102,8 +106,11 @@ const Chat = ({ socket }) => {
             <h2>Telegram</h2>
             {/* <Modal/> */}
             {/* <button className={styles.dropdown} onClick={()=>Navigate(`/profile/${profile.id}`)}> {imgProfile} </button> */}
-            <p className={styles.imgProfile} onClick={()=>Navigate(`/profile/${profile.id}`)}>
-            <img src={imgProfile} alt="img" width='50px' height='50px' />
+            <p
+              className={styles.imgProfile}
+              onClick={() => Navigate(`/profile/${profile.id}`)}
+            >
+              <img src={imgProfile} alt="img" width="50px" height="50px" />
             </p>
           </div>
           <div className={styles.search}>
@@ -155,7 +162,7 @@ const Chat = ({ socket }) => {
                         onClick={() => deleteMessage(item.id)}
                         className={styles.delete}
                       >
-                        x
+                        delete
                       </button>
                     </p>
                   </li>
