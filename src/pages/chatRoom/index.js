@@ -8,6 +8,8 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import imgProfile from "../../assets/download-icon-profile+profile+page+user+icon-1320186864367220794_512.png";
 // import Modal from "../../components/module/Modal"
+import Moment from "react-moment";
+import "moment-timezone";
 
 const Chat = ({ socket }) => {
   const Navigate = useNavigate();
@@ -157,7 +159,9 @@ const Chat = ({ socket }) => {
                   >
                     <p>{item.message}</p>
                     <p className={styles.date}>
-                      {item.date}{" "}
+                      <Moment unix tz="Asia/Jakarta">
+                        {item.date}
+                      </Moment>{" "}
                       <button
                         onClick={() => deleteMessage(item.id)}
                         className={styles.delete}
