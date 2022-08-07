@@ -68,11 +68,11 @@ Contributions are what make the open source community such an amazing place to b
 
 | Register Page  | Login Page |
 | ------------- | ------------- |
-| ![register](/telegram/images/register.jpg?raw=true "Register Page") | ![login](/telegram/images/login.jpg?raw=true "Login Page") |
+| ![register](/images/register.jpg?raw=true "Register Page") | ![login](/images/login.jpg?raw=true "Login Page") |
 
 | Chat Page | Update Profile Page |
 | ------------- | ------------- |
-| ![chat](/telegram/images/chat.jpg?raw=true "Chat Page") | ![update profile](/telegram/images/updateprofile.jpg?raw=true "Update Profile Page") |
+| ![chat](/images/chat.jpg?raw=true "Chat Page") | ![update profile](/images/updateprofile.jpg?raw=true "Update Profile Page") |
 
 
 <!-- RELATED PROJECT -->
