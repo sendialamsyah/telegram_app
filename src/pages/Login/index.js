@@ -28,7 +28,7 @@ const Login = ({setSocket}) => {
       // console.log(respData);
       localStorage.setItem('token', respData.token)
       localStorage.setItem('refreshToken', respData.refreshToken)
-      const resultSocket = io('https://telegram-chat-apps.herokuapp.com', {
+      const resultSocket = io('https://telegrambackend.up.railway.app', {
         query: {
           token: respData.token
         }

@@ -17,7 +17,7 @@
 
 
 Telegram is a realtime application where users can login, register, and send messages with other users. This application was developed using Node Js, React Js, and Socket.io.
-This Application use Rest API server from [Telegram API](https://telegram-chat-apps.herokuapp.com)
+This Application use Rest API server from [Telegram API](https://telegrambackend.up.railway.app)
 
 ### Built With
 
@@ -48,7 +48,7 @@ npm install
 ```
 3. Add .env file at root folder project, and add following
 ```sh
-REACT_APP_API_RAILWAY = https://telegram-chat-apps.herokuapp.com/ // or use your own
+REACT_APP_API_RAILWAY = https://telegrambackend.up.railway.app/ // or use your own
 
 ```
 
@@ -78,7 +78,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- RELATED PROJECT -->
 ## Related Project
 * [`Telegram Demo`](https://telegram-chat-apps.vercel.app/)
-* [`Telegram Rest API`](https://telegram-chat-apps.herokuapp.com/)
+* [`Telegram Rest API`](https://telegrambackend.up.railway.app/)
 * [`Telegram Backend Repository`](https://github.com/sendialamsyah/telegram_backend)
 
 
