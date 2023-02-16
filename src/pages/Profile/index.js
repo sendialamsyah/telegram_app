@@ -23,7 +23,7 @@ const Profile = () => {
   
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_HEROKU}/users/${iduser}`)
+      .get(`${process.env.REACT_APP_API_RAILWAY}/users/${iduser}`)
       .then((res) => {
         const users = res.data.data;
         setProfile(users);
@@ -46,7 +46,7 @@ const Profile = () => {
     formData.append("image", image.file);
     formData.append("name", name);
     await axios
-      .put(`${process.env.REACT_APP_API_HEROKU}/users/${iduser}`, formData)
+      .put(`${process.env.REACT_APP_API_RAILWAY}/users/${iduser}`, formData)
       .then(() => {
         swal("Good job!", "Update Success!", "success");
         Navigate('/chat')

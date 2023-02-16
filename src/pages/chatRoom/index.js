@@ -20,7 +20,7 @@ const Chat = ({ socket }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${process.env.REACT_APP_API_HEROKU}/users/profile`, {
+      .get(`${process.env.REACT_APP_API_RAILWAY}/users/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,7 +36,7 @@ const Chat = ({ socket }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${process.env.REACT_APP_API_HEROKU}/users/`, {
+      .get(`${process.env.REACT_APP_API_RAILWAY}/users/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -60,7 +60,7 @@ const Chat = ({ socket }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`${process.env.REACT_APP_API_HEROKU}/messages/${friend.id}`, {
+      .get(`${process.env.REACT_APP_API_RAILWAY}/messages/${friend.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -92,7 +92,7 @@ const Chat = ({ socket }) => {
 
   const deleteMessage = async (id) => {
     await axios
-      .delete(`${process.env.REACT_APP_API_HEROKU}/messages/${id}`)
+      .delete(`${process.env.REACT_APP_API_RAILWAY}/messages/${id}`)
       .then(() => {
         swal("Good job!", "Delete Message Success!", "success");
       });

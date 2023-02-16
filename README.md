@@ -48,7 +48,7 @@ npm install
 ```
 3. Add .env file at root folder project, and add following
 ```sh
-REACT_APP_API_HEROKU = https://telegram-chat-apps.herokuapp.com/ // or use your own
+REACT_APP_API_RAILWAY = https://telegram-chat-apps.herokuapp.com/ // or use your own
 
 ```
 

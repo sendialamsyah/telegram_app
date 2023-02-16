@@ -23,7 +23,7 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_API_HEROKU}/users/register`, formRegister)
+      .post(`${process.env.REACT_APP_API_RAILWAY}/users/register`, formRegister)
       .then(() => {
         swal("Good job!", "Register Success!", "success");
         navigate('/login')
